@@ -1,3 +1,33 @@
 <h1>Activities</h1>
+<p>
+	Select the activities that you would like your students to see on their personal pages. 
+	You can also create your own track with activities. Select "new activities" and fill in the content in the boxes that appear. 
+</p>
 
-<%= link_to 'New Activity', new_activity_path %>
+<p>
+<table>
+	<tr>
+		<th>Select</th>
+		<th>Track</th>
+		<th>Title</th>
+		<th>Receive Content</th>
+		<th>Reflect Content</th>
+		<th>Respond Content</th>
+	</tr>
+
+    <% @activities.each do |activity| %>
+     <tr>
+    	<td><%= check_box_tag(activity.select) %></td>
+    	<td><%= activity.track %></td>
+    	<td><%= activity.title %></td>
+    	<td><%= activity.receive_content %></td>
+    	<td><%= activity.reflect_content %></td>
+    	<td><%= activity.respond_content %></td>
+    	<td><%= link_to 'Show', activity_path(activity) %></td>
+    	<td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+    	<td><%= link_to 'Delete', activity_path(activity), method: :delete, data: { confirm: 'Are you sure?' } %></br>
+     </tr>
+   <% end %>
+</table>
+<br>
+<%= link_to 'Create a New Activity', new_activity_path %></br>
