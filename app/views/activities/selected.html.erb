@@ -1,0 +1,18 @@
+<h1>Selected Activities</h1>
+
+<table>
+	<tr>
+      <th>Track Name</th>
+	  <th>Activity Title</th>
+	</tr>
+
+  <% @activities.each do |activity| %>
+    <tr>
+      <td><%= activity.track %></td>
+      <td><%= activity.title %></td>
+      <td><%= link_to 'Begin Activity', activity_path(activity) %>
+    </tr>
+  <% end %>
+ </table>
+
+ <%= link_to 'Back', posts_path %>

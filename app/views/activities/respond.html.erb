@@ -1,0 +1,10 @@
+<h1>Respond Content</h1>
+
+<h1><%= @activity.title %></h1>
+<p>from the <%=@activity.track %> track</p> 
+
+<h2><%= @activity.respond_content %></h2>
+
+<%= link_to 'New Post', new_post_path %></br>
+<%= link_to 'Back', reflect_activity_path %></br>
+<%= link_to 'Home', posts_path %>

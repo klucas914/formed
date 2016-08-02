@@ -1,6 +1,23 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :activities do 
+    member do
+      post :save
+    end
+    member do
+      get :reflect
+    end
+    member do
+      get :receive
+    end
+    member do
+      get :respond
+    end
+    collection do
+      get :selected
+    end
   resources :activities
+  end
 
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.

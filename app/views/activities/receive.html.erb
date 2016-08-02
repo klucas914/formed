@@ -1,0 +1,10 @@
+<h1>Receive Content</h1>
+
+<h1><%= @activity.title %></h1>
+<p>from the <%=@activity.track %> track</p> 
+
+<h2><%= @activity.receive_content %></h2>
+
+<%= link_to 'Next', reflect_activity_path %></br>
+<%= link_to 'Back', activity_path %></br>
+<%= link_to 'Home', posts_path %>

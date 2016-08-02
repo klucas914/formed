@@ -42,6 +42,33 @@ class ActivitiesController < ApplicationController
     redirect_to activities_path
   end
 
+  def save
+    @activity = Activity.find(params[:id])
+
+    if @activity.update(:select == TRUE)
+      flash[:notice] = "Activities successfully saved!"
+      redirect_to activities_path
+    else
+      flash[:alert] = "There was an error choosing activities. Please try again." 
+    end
+  end
+
+  def selected
+    @activities = Activity.where(:select == TRUE).order(:track)
+  end
+
+  def receive
+    @activity = Activity.find(params[:id])
+  end
+
+  def reflect
+    @activity = Activity.find(params[:id])
+  end
+
+  def respond
+    @activity = Activity.find(params[:id])
+  end
+
   private
     def activity_params
     	params.require(:activity).permit(:track, :title, :receive_content, :reflect_content, :respond_content, :select)

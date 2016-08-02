@@ -5,7 +5,7 @@
 </p>
 
 <p>
-<table>
+<table class="table table-bordered table-scrollable">
 	<tr>
 		<th>Select</th>
 		<th>Track</th>
@@ -17,7 +17,7 @@
 
     <% @activities.each do |activity| %>
      <tr>
-    	<td><%= check_box_tag(activity.select) %></td>
+    	<td><%= check_box_tag(activity.select, checked = true) %></td>
     	<td><%= activity.track %></td>
     	<td><%= activity.title %></td>
     	<td><%= activity.receive_content %></td>
@@ -30,4 +30,5 @@
    <% end %>
 </table>
 <br>
+<%= button_to 'Save' %><br>
 <%= link_to 'Create a New Activity', new_activity_path %></br>
