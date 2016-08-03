@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160801102132) do
+ActiveRecord::Schema.define(version: 20160803020913) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "track"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20160801102132) do
     t.boolean  "select",          default: false
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "groups", ["user_id"], name: "index_groups_on_user_id"
+
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "instructions"
@@ -31,5 +40,15 @@ ActiveRecord::Schema.define(version: 20160801102132) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "role"
+    t.integer  "groups_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "users", ["groups_id"], name: "index_users_on_groups_id"
 
 end
